@@ -1,29 +1,54 @@
 # Task3-ATM-Interface
 
+
 import java.awt.*;
+
 import javax.swing.*;
+
 import java.awt.event.*;
+
 import java.io.*;
+
 import java.util.*;
+
 public class ATM {
-    public static void main(String[] args) {
-        BankAccount ba = new BankAccount("Krishna", "7593");
-        ba.login();
-    }
+
+public static void main(String[] args) {
+
+BankAccount ba = new BankAccount("Krishna", "7593");
+
+ba.login();
+
 }
+
+}
+
 class BankAccount extends JFrame {
+
 int balance;
+
 int withdraw;
+
 int deposit;
+
 int prevTransaction;
+
 String userName;
+
 String userId;
+
 int flag = 0;
+
 JRadioButton jRadioButton1;
+
 JRadioButton jRadioButton2;
+
 JRadioButton jRadioButton3;
+
 JRadioButton jRadioButton4;
+
 JRadioButton jRadioButton5;
+
 JRadioButton jRadioButton6;
 
 	JButton jButton;
@@ -36,7 +61,7 @@ JRadioButton jRadioButton6;
        userName = uName;
 	   userId = uId;
     }
-	 void login() {
+	void login() {
         System.out.println("Welcome "+ userName);
         System.out.println();
         System.out.print("ENTER PIN ");
@@ -133,32 +158,29 @@ JRadioButton jRadioButton6;
 			public void actionPerformed(ActionEvent e)
 			{
 				
-				
-				
 				if (jRadioButton1.isSelected()) {
-					        String input;
-					        input=JOptionPane.showInputDialog("Enter money to be withdrawn:");
-					        withdraw=Integer.parseInt(input);
-                	if(balance >= withdraw)
-                	{
-                    balance = balance - withdraw;
-					          prevTransaction = -withdraw;
-                    JOptionPane.showMessageDialog(BankAccount.this, "Please collect your Money");
-                	}
-                	else
-                	{
-                    JOptionPane.showMessageDialog(BankAccount.this,"Insufficient Balance");
-                	}
-				}
+				String input;
+				input=JOptionPane.showInputDialog("Enter money to be withdrawn:");
+				withdraw=Integer.parseInt(input);
+                		if(balance >= withdraw)
+                		  {
+                    		  balance = balance - withdraw;
+				  prevTransaction = -withdraw;
+                    		  JOptionPane.showMessageDialog(BankAccount.this, "Please collect your Money");
+                		  }
+                		else
+                		{
+                    		JOptionPane.showMessageDialog(BankAccount.this,"Insufficient Balance");
+                		}
+			      }
 
 				else if (jRadioButton2.isSelected()) {
-						String input;
-						input=JOptionPane.showInputDialog("Enter money to be deposited:");
-						deposit=Integer.parseInt(input);
-            balance = balance + deposit;
-						prevTransaction=deposit;
-            JOptionPane.showMessageDialog(BankAccount.this,"Your Money has been successfully deposited");
-					
+					String input;
+					input=JOptionPane.showInputDialog("Enter money to be deposited:");
+					deposit=Integer.parseInt(input);
+            				balance = balance + deposit;
+					prevTransaction=deposit;
+            				JOptionPane.showMessageDialog(BankAccount.this,"Your Money has been successfully deposited");
 				}
 				
 				else if (jRadioButton3.isSelected()) {
@@ -171,32 +193,30 @@ JRadioButton jRadioButton6;
 				}
 				else if(jRadioButton5.isSelected()){
 				
-					         BankAccount bb = new BankAccount("Shiva", "3187");
-                   String input;
-					         input=JOptionPane.showInputDialog("Enter Amount to be Transfer:");
-					         int am=Integer.parseInt(input);
-                   if (balance < am) {
+				BankAccount bb = new BankAccount("Shiva", "3187");
+                   		String input;
+				input=JOptionPane.showInputDialog("Enter Amount to be Transfer:");
+				int am=Integer.parseInt(input);
+                   		if (balance < am) {
             			  JOptionPane.showMessageDialog(BankAccount.this,"Transfer Fails due to insufficient balance!");
-                   } 
-					        else {
+                   		} 
+				else {
             			balance -= am;
             			bb.balance += am;
             			JOptionPane.showMessageDialog(BankAccount.this,"Your Account becomes $" + balance);
-						      JOptionPane.showMessageDialog(BankAccount.this,"Account of " + bb.userName + " becomes $" + bb.balance);
+				JOptionPane.showMessageDialog(BankAccount.this,"Account of " + bb.userName + " becomes $" + bb.balance);
             
-                  }
-                    
-
+                  		}
 				}
 				else if(jRadioButton6.isSelected()){
 					if (prevTransaction > 0) {
-            		JOptionPane.showMessageDialog(BankAccount.this,"Deposited: " + prevTransaction);
+            				JOptionPane.showMessageDialog(BankAccount.this,"Deposited: " + prevTransaction);
         			} 
 					else if (prevTransaction < 0) {
-            		JOptionPane.showMessageDialog(BankAccount.this,"Withdraw: " + Math.abs(prevTransaction));
+            				JOptionPane.showMessageDialog(BankAccount.this,"Withdraw: " + Math.abs(prevTransaction));
         			} 
 					else {
-            			JOptionPane.showMessageDialog(BankAccount.this,"No Transaction Occured ");
+            				JOptionPane.showMessageDialog(BankAccount.this,"No Transaction Occured ");
         			}
 				}
 				else {
